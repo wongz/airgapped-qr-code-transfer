@@ -107,6 +107,7 @@
                 let decoded_data = symbols[0].decode();
                 if (decoded_data.includes("chunks")) {
                   Object.assign(file_metadata, JSON.parse(decoded_data));
+                  file_metadata.name = decodeURI(file_metadata.name);
                   decoded_chunks.value = {};
                   user_message.value = `Transferring file: ${file_metadata.name}`;
                 } else if (decoded_data.split(",").length == 2) {
