@@ -73,7 +73,7 @@
             let data_chunks = [];
             let data_array = pako.gzip(await file.arrayBuffer(), { level: 9 });
             let total_chunks = Math.ceil(data_array.length / chunk_size);
-            let file_metadata = { name: file.name, chunks: total_chunks };
+            let file_metadata = { name: encodeURI(file.name), chunks: total_chunks };
             qrcode_object.clear();
             qrcode_object.makeCode(JSON.stringify(file_metadata));
             user_message.value = "Starting data transfer in few seconds ...";
